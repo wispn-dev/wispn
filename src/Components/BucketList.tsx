@@ -8,6 +8,7 @@ function BucketList() {
   // access state here -> useAppSelector to access state?
   const allActivities = {'running': false, 'swimming': false};
   // const allActivities = useAppSelector((state)=>state.activities)
+  const dispatch = useAppDispatch();
   
   const checkboxes: JSX.Element[] = [];
   // for each activity in the state
@@ -18,7 +19,13 @@ function BucketList() {
 
   useEffect(() => {
     // make api call to get the activities <-- written by backend team
+    const fetchActivities = async () => {
+      const response = await fetch('/activities');
+      
+    }
     // set the activites state to the fetched activities
+
+    fetchActivities();
   }, [])
 
   
