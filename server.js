@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path')
 const app = express();
 const parksController = require('./controllers/parksController');
-const PATH = '3333';
+const PORT = 3333;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended :true }));
@@ -11,9 +11,13 @@ app.use(express.static('dist'));
 // app.get('/', (req, res) => {
 //     return res.status(200).sendFile(path.resolve(__dirname, '../views/wherevertheyare'))
 // });
+//anshu: send back just the array of names (40 elements)
+app.get('/parks', parksController.getParks, (req, res) => {
+  return res.status(200).json(res.locals.allParks);
+});
 
-app.get('/', (req, res) => {
-  return res.status(200).json(res.locals.parks);
+app.get('/activities', parksController.getTasks, (req, res) => {
+  return res.status(200).json(res.locals.allTasks);
 });
 
 //404 catch-all
@@ -33,4 +37,4 @@ app.use((err, req, res, next) => {
 });
   
 
-app.listen(PORT => () => console.log(`server connected ${PORT}`))
+app.listen(PORT, () => console.log(`server connected ${PORT}`))
