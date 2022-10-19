@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-  ]
+, "Testing/setupTests.ts", "Testing", "Testing/App.test.tsx"  ]
 }

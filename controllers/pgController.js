@@ -2,11 +2,6 @@ const { createLogicalNot } = require('typescript');
 const db = require('../models/parksModel');
 const pgController = {};
 
-const loginButton = document.getElementById("this is an mui no id");
-loginButton.addEventListener('click', () => {
-    
-})
-
 pgController.addUser = async (req, res, next) => {
     try {
       const { email, password } = req.body;

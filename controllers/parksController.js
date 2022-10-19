@@ -21,7 +21,7 @@ parksController.getParks = async (req, res, next) => {
       return next({
         log: `middleware did not work err: ${err}`, 
         status: 400,
-        message: 'global error handler caught, put in a valid getParks'
+        message: 'global error handler caught in parks controller'
       });
     };
   };
@@ -30,6 +30,7 @@ parksController.getParks = async (req, res, next) => {
 parksController.getTasks = async (req, res, next)=> {
   try {
     const url = "https://developer.nps.gov/api/v1/activities/parks";
+    console.log('in get tasks');
     fetch(url, {
       method: "GET",
       headers: {
@@ -48,10 +49,11 @@ parksController.getTasks = async (req, res, next)=> {
       return next();
     })
 } catch (err) {
+    console.log(err);
       return next({
         log: `middleware did not work err: ${err}`,
         status: 400,
-        message: 'global error handler caught, put in a valid getTasks'
+        message: 'global error handler caught in tasks contoller'
       });
     };
   }
