@@ -21,7 +21,7 @@ parksController.getParks = async (req, res, next) => {
       return next({
         log: `middleware did not work err: ${err}`, 
         status: 400,
-        message: 'global error handler caught, put in a valid post'
+        message: 'global error handler caught, put in a valid getParks'
       });
     };
   };
@@ -51,10 +51,9 @@ parksController.getTasks = async (req, res, next)=> {
       return next({
         log: `middleware did not work err: ${err}`,
         status: 400,
-        message: 'global error handler caught, put in a valid post'
+        message: 'global error handler caught, put in a valid getTasks'
       });
     };
   }
-
 
 module.exports = parksController;
