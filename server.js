@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path')
 const app = express();
 const parksController = require('./controllers/parksController');
+const pgController = require('./controllers/pgController');
 const PORT = 3333;
 
 app.use(express.json());
@@ -11,7 +12,11 @@ app.use(express.static('dist'));
 // app.get('/', (req, res) => {
 //     return res.status(200).sendFile(path.resolve(__dirname, '../views/wherevertheyare'))
 // });
-//anshu: send back just the array of names (40 elements)
+
+app.get('/login', pgController.addUser, (req, res) => {
+  return res.status(201).redirect('/showList')
+})
+
 app.get('/parks', parksController.getParks, (req, res) => {
   return res.status(200).json(res.locals.allParks);
 });
