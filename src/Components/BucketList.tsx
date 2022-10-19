@@ -22,7 +22,15 @@ function BucketList() {
     // make api call to get the activities <-- written by backend team
     const fetchActivities = async () => {
       const response = await fetch('/activities');
-      const activities = await response.json();
+      const data = await response.json();
+      const activities: {name: string, parks: string[]}[] = [];
+      for (const item of data.data) {
+        const parkCodes: string[] = [];
+        for (const park of item.parks) {
+          parkCodes.push(park.parkCode);
+        }
+        activities.push({name: item.name, parks:parkCodes});
+      }
       dispatch(setActivities(activities));
 
     }

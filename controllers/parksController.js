@@ -3,7 +3,8 @@ const parksController = {};
 
 parksController.getParks = async (req, res, next) => {
   try {
-    const url = "https://developer.nps.gov/api/v1/parks?limit=600";
+    const { parks } = req.query;
+    const url = `https://developer.nps.gov/api/v1/parks?limit=10&parkCode=${parks}`;
     fetch(url, {
       method: "GET",
       headers: {
@@ -41,10 +42,7 @@ parksController.getTasks = async (req, res, next)=> {
     .then(res => res.json())
     .then(data => {
       console.log(data)
-      const output = [];
-      data.data.forEach(obj => {
-        output.push(obj.name)
-      });
+      const output = data;
       res.locals.allTasks = output;
       return next();
     })
