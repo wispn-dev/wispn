@@ -9,6 +9,7 @@ function ParkBox(props: {data: any}) {
     // const [checked, setChecked] = React.useState(true);
     const allActivities = useAppSelector((state)=>state.activities);
     const dispatch = useAppDispatch();
+    const { data } = props;
     // const checked = allActivities[props.activity];
 
     
@@ -19,11 +20,39 @@ function ParkBox(props: {data: any}) {
 
 
   return (
-    <Box>
-        <p>{props.data.fullName}</p>
+    <a href={data.url} target="_blank" rel="noopener noreferrer" className='park-link'> 
+    <Box className='park-box'>
+        <h4>{data.fullName}</h4>
+        <img src={data.images[0].url} alt={data.images[0].altText}></img>
+        <p><b>State(s): </b>{data.states}</p>
+        <p><b>Description: </b>{data.description}</p>
+        
+
     </Box>
+    </a>
   )
 }
 
 export default ParkBox;
 
+/*
+keys on data
+url: official park website √
+fullName: full name of park √
+description: short description of park
+states: states the park is in √
+entranceFees: [
+  {
+    cost, description, title
+  }
+]
+images[0].url: image link
+images[0].altText: image alt text
+
+
+
+
+
+
+
+*/

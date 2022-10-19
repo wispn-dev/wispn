@@ -11,3 +11,45 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.park-box {
+  border: 1px solid green;
+  margin: 3em;
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  max-width: 30em;
+}
+
+.park-box img {
+  height: 9em;
+  width: 16em;
+}
+
+.park-box p {
+  text-align: left;
+}
+
+.park-link {
+  text-decoration: none;
+  color: black;
+}
+
+.activity-box {
+  padding-left: 1em;
+  width: 15em;
+}
+
+.park-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.wispn-logo {
+  height: 7em;
+  width: 7em;
+  margin: 0.5em;
+}

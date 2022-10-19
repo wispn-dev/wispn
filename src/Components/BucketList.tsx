@@ -15,7 +15,7 @@ function BucketList() {
   // for each activity in the state
     // push to checkboxes {<FormControlLabel control={<ActivityBox />} label="Check me"/>}
   Object.keys(allActivities).forEach(activity => {
-    checkboxes.push(<FormControlLabel control={<ActivityBox activity={activity}/>} label={activity}/>)
+    checkboxes.push(<FormControlLabel control={<ActivityBox activity={activity}/>} label={activity} className='activity-box'/>)
   });
 
   useEffect(() => {

@@ -57,8 +57,8 @@ function ParkList() {
   // }, [activeParks]);
   
   return (
-    <div>
-      {parkBoxes}
+    <div className='park-list'>
+      {parkBoxes.length ? parkBoxes : <p>No parks meet selection criteria...</p>}
     </div>
   )
 }
