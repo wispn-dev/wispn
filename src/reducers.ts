@@ -7,7 +7,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 //     })
 // })
 type activitiesStateType = {
-  [key: string]: boolean;
+  [key: string]: {status: boolean, parks: string[]};
 }
 
 const initialState: activitiesStateType = {};
@@ -16,16 +16,21 @@ export const activitiesSlice = createSlice({
   name: 'activities',
   initialState,
   reducers: {
-    setActivities: (state: activitiesStateType, action: PayloadAction<string[]>) => {
+    setActivities: (state: activitiesStateType, action: PayloadAction<{name: string, parks: string[]}[]>) => {
       action.payload.forEach(activity => {
-        state[activity] = false;
+        state[activity.name] = {status: false, parks: activity.parks};
       })
     },
     toggleActivity: (state: activitiesStateType, action: PayloadAction<{activity: string, status: boolean}>) => {
-      state[action.payload.activity] = action.payload.status;
+      state[action.payload.activity].status = action.payload.status;
     }
   }
 })
+
+// export const parksByActivitySlice = createSlice({
+//   name: 'parksByActivity',
+//   initialState
+// })
 
 export const {
   setActivities,
