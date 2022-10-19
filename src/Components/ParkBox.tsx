@@ -2,24 +2,28 @@ import React, { useEffect } from 'react';
 import { Checkbox } from "@mui/material";
 import { useAppSelector, useAppDispatch } from '../hooks';
 import { toggleActivity } from '../reducers';
+import { Box } from '@mui/system';
 
-function ActivityBox(props: {activity: string}) {
+function ParkBox(props: {data: any}) {
     // useState hooks to later identify which checkboz is being selected?
     // const [checked, setChecked] = React.useState(true);
     const allActivities = useAppSelector((state)=>state.activities);
     const dispatch = useAppDispatch();
-    const checked = allActivities[props.activity].status;
+    // const checked = allActivities[props.activity];
 
     
 
-    const handleChange = (event:any) => {
-      dispatch(toggleActivity({activity: props.activity, status: !checked}));
-  };
+//     const handleChange = (event:any) => {
+//       dispatch(toggleActivity({activity: props.activity, status: !checked}));
+//   };
+
 
   return (
-    <Checkbox checked={checked} onChange={handleChange} />
+    <Box>
+        <p>{props.data.fullName}</p>
+    </Box>
   )
 }
 
-export default ActivityBox;
+export default ParkBox;
 
